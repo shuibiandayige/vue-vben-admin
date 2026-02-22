@@ -55,6 +55,7 @@
     "name": "Role",
     "roleName": "Role Name",
     "id": "Role ID",
+    "code": "Alias",
     "status": "Status",
     "remark": "Remark",
     "createTime": "Creation Time",

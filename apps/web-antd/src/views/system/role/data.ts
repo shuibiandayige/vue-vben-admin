@@ -90,6 +90,11 @@ export function useColumns<T = SystemRoleApi.SystemRole>(
       width: 200,
     },
     {
+      field: 'code',
+      title: $t('system.role.code'),
+      width: 200,
+    },
+    {
       cellRender: {
         attrs: { beforeChange: onStatusChange },
         name: onStatusChange ? 'CellSwitch' : 'CellTag',
