@@ -11,5 +11,40 @@
     "title": "Dashboard",
     "analytics": "Analytics",
     "workspace": "Workspace"
+  },
+  "system": {
+    "title": "System",
+    "user": "User",
+    "role": "Role",
+    "menu": "Menu",
+    "dept": "Department",
+
+    "userManage": {
+      "create": "Create User",
+      "edit": "Edit User",
+      "delete": "Delete User"
+    },
+    "roleManage": {
+      "create": "Create Role",
+      "edit": "Edit Role"
+    },
+    "menuManage": {
+      "create": "Create Menu",
+      "edit": "Edit Menu",
+      "delete": "Delete Menu"
+    },
+    "deptManage": {
+      "create": "Create Department",
+      "edit": "Edit Department"
+    }
+  },
+  "demos": {
+    "title": "Demos",
+    "embedded": {
+      "vben": "Vben Embedded"
+    },
+    "link": {
+      "github": "Github External Link"
+    }
   }
 }

@@ -11,5 +11,40 @@
     "title": "概览",
     "analytics": "分析页",
     "workspace": "工作台"
+  },
+  "system": {
+    "title": "系统管理",
+    "user": "用户管理",
+    "role": "角色管理",
+    "menu": "菜单管理",
+    "dept": "部门管理",
+
+    "userManage": {
+      "create": "新增用户",
+      "edit": "编辑用户",
+      "delete": "删除用户"
+    },
+    "roleManage": {
+      "create": "新增角色",
+      "edit": "编辑角色"
+    },
+    "menuManage": {
+      "create": "新增菜单",
+      "edit": "编辑菜单",
+      "delete": "删除菜单"
+    },
+    "deptManage": {
+      "create": "新增部门",
+      "edit": "编辑部门"
+    }
+  },
+  "demos": {
+    "title": "演示",
+    "embedded": {
+      "vben": "Vben 内嵌页面"
+    },
+    "link": {
+      "github": "Github 外链"
+    }
   }
 }
