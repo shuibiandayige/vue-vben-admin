@@ -28,6 +28,7 @@ function generateMockDataList(count: number) {
         faker.date.between({ from: '2022-01-01', to: '2025-01-01' }),
       ),
       permissions: faker.helpers.arrayElements(menuIds),
+      apiPermissions: faker.helpers.arrayElements([1, 2, 3, 4, 5, 6]),
       remark: faker.lorem.sentence(),
     };
 
