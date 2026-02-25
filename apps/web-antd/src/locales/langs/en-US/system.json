@@ -62,5 +62,17 @@
     "operation": "Operation",
     "permissions": "Permissions",
     "setPermissions": "Permissions"
+  },
+  "permission": {
+    "title": "Permission Management",
+    "list": "Permission List",
+    "name": "Permission",
+    "permissionName": "Permission Name",
+    "id": "Permission ID",
+    "code": "Permission Code",
+    "resource": "Resource",
+    "remark": "Remark",
+    "createdAt": "Creation Time",
+    "operation": "Operation"
   }
 }

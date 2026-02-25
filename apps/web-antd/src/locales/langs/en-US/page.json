@@ -18,6 +18,7 @@
     "role": "Role",
     "menu": "Menu",
     "dept": "Department",
+    "permission": "Permission",
 
     "userManage": {
       "create": "Create User",
@@ -36,6 +37,11 @@
     "deptManage": {
       "create": "Create Department",
       "edit": "Edit Department"
+    },
+    "permissionManage": {
+      "create": "Create Permission",
+      "edit": "Edit Permission",
+      "delete": "Delete Permission"
     }
   },
   "demos": {

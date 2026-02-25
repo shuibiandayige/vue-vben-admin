@@ -64,5 +64,17 @@
     "operation": "操作",
     "permissions": "权限",
     "setPermissions": "授权"
+  },
+  "permission": {
+    "title": "权限管理",
+    "list": "权限列表",
+    "name": "权限",
+    "permissionName": "权限名称",
+    "id": "权限ID",
+    "code": "权限标识码",
+    "resource": "资源标识",
+    "remark": "备注",
+    "createdAt": "创建时间",
+    "operation": "操作"
   }
 }
