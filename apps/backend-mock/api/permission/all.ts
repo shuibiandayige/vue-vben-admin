@@ -1,12 +1,9 @@
 import { eventHandler } from 'h3';
 import { verifyAccessToken } from '~/utils/jwt-utils';
-import {
-  unAuthorizedResponse,
-  useResponseSuccess,
-} from '~/utils/response';
+import { unAuthorizedResponse, useResponseSuccess } from '~/utils/response';
 
 /**
- * GET /system/permission/all
+ * GET /permission/all
  * 获取全部权限（不分页）
  */
 export default eventHandler(async (event) => {
@@ -22,7 +19,7 @@ export default eventHandler(async (event) => {
       id: 1,
       name: 'system:user:view',
       code: 'system:user:view',
-      resource: '/system/user',
+      resource: '/user',
       remark: '查看用户',
       createdAt: '2024-01-01 00:00:00',
       updatedAt: '2024-01-01 00:00:00',
@@ -31,7 +28,7 @@ export default eventHandler(async (event) => {
       id: 2,
       name: 'system:user:manage',
       code: 'system:user:manage',
-      resource: '/system/user',
+      resource: '/user',
       remark: '管理用户',
       createdAt: '2024-01-01 00:00:00',
       updatedAt: '2024-01-01 00:00:00',
@@ -40,7 +37,7 @@ export default eventHandler(async (event) => {
       id: 3,
       name: 'system:role:view',
       code: 'system:role:view',
-      resource: '/system/role',
+      resource: '/role',
       remark: '查看角色',
       createdAt: '2024-01-01 00:00:00',
       updatedAt: '2024-01-01 00:00:00',
@@ -49,7 +46,7 @@ export default eventHandler(async (event) => {
       id: 4,
       name: 'system:role:manage',
       code: 'system:role:manage',
-      resource: '/system/role',
+      resource: '/role',
       remark: '管理角色',
       createdAt: '2024-01-01 00:00:00',
       updatedAt: '2024-01-01 00:00:00',
@@ -58,7 +55,7 @@ export default eventHandler(async (event) => {
       id: 5,
       name: 'system:permission:view',
       code: 'permission:view',
-      resource: '/system/permission',
+      resource: '/permission',
       remark: '查看权限',
       createdAt: '2024-01-01 00:00:00',
       updatedAt: '2024-01-01 00:00:00',
@@ -67,7 +64,7 @@ export default eventHandler(async (event) => {
       id: 6,
       name: 'system:permission:manage',
       code: 'permission:manage',
-      resource: '/system/permission',
+      resource: '/permission',
       remark: '管理权限',
       createdAt: '2024-01-01 00:00:00',
       updatedAt: '2024-01-01 00:00:00',
@@ -76,4 +73,3 @@ export default eventHandler(async (event) => {
 
   return useResponseSuccess(allPermissions);
 });
-

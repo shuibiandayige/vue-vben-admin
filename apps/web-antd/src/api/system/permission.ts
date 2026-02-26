@@ -34,7 +34,7 @@ async function getPermissionList(params: Recordable<any>) {
   return requestClient.get<{
     items: SystemPermissionApi.SystemPermission[];
     total: number;
-  }>('/system/permission/list', { params });
+  }>('/permission/list', { params });
 }
 
 /**
@@ -42,17 +42,7 @@ async function getPermissionList(params: Recordable<any>) {
  */
 async function getAllPermissions() {
   return requestClient.get<SystemPermissionApi.SystemPermission[]>(
-    '/system/permission/all',
-  );
-}
-
-/**
- * 获取单个权限详情
- * @param id 权限 ID
- */
-async function getPermissionById(id: number) {
-  return requestClient.get<SystemPermissionApi.SystemPermission>(
-    `/system/permission/${id}`,
+    '/permission/all',
   );
 }
 
@@ -64,7 +54,7 @@ async function createPermission(
   data: SystemPermissionApi.PermissionCreateBody,
 ) {
   return requestClient.post<SystemPermissionApi.SystemPermission>(
-    '/system/permission',
+    '/permission',
     data,
   );
 }
@@ -79,7 +69,7 @@ async function updatePermission(
   data: SystemPermissionApi.PermissionUpdateBody,
 ) {
   return requestClient.put<SystemPermissionApi.SystemPermission>(
-    `/system/permission/${id}`,
+    `/permission/${id}`,
     data,
   );
 }
@@ -89,15 +79,13 @@ async function updatePermission(
  * @param id 权限 ID
  */
 async function deletePermission(id: number) {
-  return requestClient.delete(`/system/permission/${id}`);
+  return requestClient.delete(`/permission/${id}`);
 }
 
 export {
   createPermission,
   deletePermission,
   getAllPermissions,
-  getPermissionById,
   getPermissionList,
   updatePermission,
 };
-

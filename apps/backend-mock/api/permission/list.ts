@@ -17,11 +17,11 @@ function generateMockDataList(count: number) {
   const dataList = [];
 
   const resources = [
-    '/system/user',
-    '/system/role',
-    '/system/menu',
-    '/system/dept',
-    '/system/permission',
+    '/user',
+    '/role',
+    '/menu',
+    '/dept',
+    '/permission',
     '/dashboard',
     '/monitor',
   ];
@@ -34,7 +34,7 @@ function generateMockDataList(count: number) {
     const dataItem: Record<string, any> = {
       id: i + 1,
       name: `${resource.replace('/', '').replace('/', ':')}:${action}`,
-      code: `${resource.replace(/\//g, ':').replace(/^:/, '')}:${action}`,
+      code: `${resource.replaceAll('/', ':').replace(/^:/, '')}:${action}`,
       resource,
       remark: faker.helpers.maybe(() => faker.lorem.sentence(), {
         probability: 0.6,
@@ -97,4 +97,3 @@ export default eventHandler(async (event) => {
 
   return usePageResponseSuccess(page as string, pageSize as string, listData);
 });
-

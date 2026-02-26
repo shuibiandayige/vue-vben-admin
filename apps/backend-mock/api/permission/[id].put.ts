@@ -7,8 +7,8 @@ import {
 } from '~/utils/response';
 
 /**
- * POST /system/permission
- * 创建权限
+ * PUT /system/permission/:id
+ * 更新权限
  */
 export default eventHandler(async (event) => {
   const userinfo = verifyAccessToken(event);
@@ -19,7 +19,6 @@ export default eventHandler(async (event) => {
   const body = await readBody(event);
   await sleep(600);
 
-  // Mock: return the created permission with a generated id
   const now = new Intl.DateTimeFormat('zh-CN', {
     timeZone: 'Asia/Shanghai',
     year: 'numeric',
@@ -31,13 +30,7 @@ export default eventHandler(async (event) => {
   }).format(new Date());
 
   return useResponseSuccess({
-    id: Math.floor(Math.random() * 9000) + 1000,
-    name: body.name,
-    code: body.code,
-    resource: body.resource,
-    remark: body.remark ?? null,
-    createdAt: now,
+    ...body,
     updatedAt: now,
   });
 });
-

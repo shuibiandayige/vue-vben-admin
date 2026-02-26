@@ -19,4 +19,3 @@ export default eventHandler(async (event) => {
   await sleep(600);
   return useResponseSuccess(null);
 });
-
