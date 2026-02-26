@@ -60,6 +60,6 @@
     "createTime": "Creation Time",
     "operation": "Operation",
     "permissions": "Permissions",
-    "setPermissions": "Permissions"
+    "setMenuPermissions": "Permissions"
   }
 }

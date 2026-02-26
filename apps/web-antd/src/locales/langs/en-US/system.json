@@ -61,7 +61,7 @@
     "createTime": "Creation Time",
     "operation": "Operation",
     "permissions": "Permissions",
-    "setPermissions": "Permissions",
+    "setMenuPermissions": "Menu Permissions",
     "setApiPermissions": "API Permissions"
   },
   "permission": {
