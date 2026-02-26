@@ -43,6 +43,11 @@
       "create": "新增权限",
       "edit": "编辑权限",
       "delete": "删除权限"
+    },
+    "configManage": {
+      "create": "新增参数",
+      "edit": "编辑参数",
+      "delete": "删除参数"
     }
   },
   "demos": {

@@ -43,6 +43,11 @@
       "create": "Create Permission",
       "edit": "Edit Permission",
       "delete": "Delete Permission"
+    },
+    "configManage": {
+      "create": "Create Parameter",
+      "edit": "Edit Parameter",
+      "delete": "Delete Parameter"
     }
   },
   "demos": {
