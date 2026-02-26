@@ -150,9 +150,10 @@ function getNodeClass(node: Recordable<any>) {
             >
               <div class="api-permissions-grid">
                 <Checkbox
-                  v-for="option in apiPermissionOptions"
+                  v-for="(option, index) in apiPermissionOptions"
                   :key="option.value"
                   :value="option.value"
+                  :class="{ 'api-permissions-full-row': index === 0 }"
                 >
                   {{ option.label }}
                 </Checkbox>
@@ -165,22 +166,6 @@ function getNodeClass(node: Recordable<any>) {
   </Drawer>
 </template>
 <style lang="css" scoped>
-:deep(.ant-tree-title) {
-  .tree-actions {
-    display: none;
-    margin-left: 20px;
-  }
-}
-
-:deep(.ant-tree-title:hover) {
-  .tree-actions {
-    display: flex;
-    flex: auto;
-    justify-content: flex-end;
-    margin-left: 20px;
-  }
-}
-
 .api-permissions-wrapper {
   width: 100%;
   padding: 8px 12px;
@@ -192,5 +177,23 @@ function getNodeClass(node: Recordable<any>) {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 8px 12px;
+}
+
+:deep(.api-permissions-full-row) {
+  grid-column: 1 / -1;
+}
+</style>
+
+<style lang="css">
+.ant-tree-title .tree-actions {
+  display: none;
+  margin-left: 20px;
+}
+
+.ant-tree-title:hover .tree-actions {
+  display: flex;
+  flex: auto;
+  justify-content: flex-end;
+  margin-left: 20px;
 }
 </style>
