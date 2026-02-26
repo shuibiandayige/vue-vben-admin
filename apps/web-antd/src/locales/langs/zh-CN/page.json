@@ -19,6 +19,7 @@
     "menu": "菜单管理",
     "dept": "部门管理",
     "permission": "权限管理",
+    "config": "系统参数",
 
     "userManage": {
       "create": "新增用户",

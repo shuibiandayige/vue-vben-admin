@@ -19,6 +19,7 @@
     "menu": "Menu",
     "dept": "Department",
     "permission": "Permission",
+    "config": "System Config",
 
     "userManage": {
       "create": "Create User",
