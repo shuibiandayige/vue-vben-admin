@@ -41,8 +41,11 @@ const [Drawer, drawerApi] = useVbenDrawer({
     const { valid } = await formApi.validate();
     if (!valid) return;
     const values = await formApi.getValues();
+    // Map menuTree form field back to menuIds for the API
+    const { menuTree, ...rest } = values;
+    const submitData = { ...rest, menuIds: menuTree };
     drawerApi.lock();
-    (id.value ? updateRole(id.value, values) : createRole(values))
+    (id.value ? updateRole(id.value, submitData) : createRole(submitData))
       .then(() => {
         emits('success');
         drawerApi.close();
@@ -72,8 +75,13 @@ const [Drawer, drawerApi] = useVbenDrawer({
       }
       // Wait for Vue to flush DOM updates (form fields mounted)
       await nextTick();
+      await nextTick();
       if (data) {
-        formApi.setValues(data);
+        // Map menuIds from role data to the menuTree form field
+        formApi.setValues({
+          ...data,
+          menuTree: data.menuIds,
+        });
       }
     }
   },

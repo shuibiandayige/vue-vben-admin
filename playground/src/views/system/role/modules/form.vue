@@ -69,6 +69,7 @@ const [Drawer, drawerApi] = useVbenDrawer({
       }
       // Wait for Vue to flush DOM updates (form fields mounted)
       await nextTick();
+      await nextTick();
       if (data) {
         formApi.setValues(data);
       }
