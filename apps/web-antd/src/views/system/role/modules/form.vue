@@ -34,6 +34,7 @@ const loadingPermissions = ref(false);
 
 const apiPermissionOptions = ref<{ label: string; value: number }[]>([]);
 const loadingApiPermissions = ref(false);
+const selectedApiPermissions = ref<number[]>([]);
 
 const id = ref();
 const [Drawer, drawerApi] = useVbenDrawer({
@@ -43,7 +44,11 @@ const [Drawer, drawerApi] = useVbenDrawer({
     const values = await formApi.getValues();
     // Map menuTree form field back to menuIds for the API
     const { menuTree, ...rest } = values;
-    const submitData = { ...rest, menuIds: menuTree };
+    const submitData = {
+      ...rest,
+      menuIds: menuTree,
+      apiPermissions: selectedApiPermissions.value,
+    };
     drawerApi.lock();
     (id.value ? updateRole(id.value, submitData) : createRole(submitData))
       .then(() => {
@@ -59,6 +64,7 @@ const [Drawer, drawerApi] = useVbenDrawer({
     if (isOpen) {
       const data = drawerApi.getData<SystemRoleApi.SystemRole>();
       formApi.resetForm();
+      selectedApiPermissions.value = [];
 
       if (data) {
         formData.value = data;
@@ -82,6 +88,10 @@ const [Drawer, drawerApi] = useVbenDrawer({
           ...data,
           menuTree: data.menuIds,
         });
+        // Set apiPermissions directly via local ref to avoid filterFields issues
+        selectedApiPermissions.value = Array.isArray(data.apiPermissions)
+          ? data.apiPermissions.map(Number)
+          : [];
       }
     }
   },
@@ -103,7 +113,7 @@ async function loadApiPermissions() {
     const res = await getAllPermissions();
     apiPermissionOptions.value = res.map((p) => ({
       label: `${p.name}`,
-      value: p.id,
+      value: Number(p.id),
     }));
   } finally {
     loadingApiPermissions.value = false;
@@ -148,13 +158,12 @@ function getNodeClass(node: Recordable<any>) {
           </Tree>
         </Spin>
       </template>
-      <template #apiPermissions="slotProps">
+      <template #apiPermissions>
         <Spin :spinning="loadingApiPermissions" wrapper-class-name="w-full">
           <div class="api-permissions-wrapper">
             <CheckboxGroup
-              :model-value="slotProps.modelValue"
+              v-model:value="selectedApiPermissions"
               class="w-full"
-              @update:model-value="slotProps['onUpdate:modelValue']"
             >
               <div class="api-permissions-grid">
                 <Checkbox
@@ -189,19 +198,5 @@ function getNodeClass(node: Recordable<any>) {
 
 :deep(.api-permissions-full-row) {
   grid-column: 1 / -1;
-}
-</style>
-
-<style lang="css">
-.ant-tree-title .tree-actions {
-  display: none;
-  margin-left: 20px;
-}
-
-.ant-tree-title:hover .tree-actions {
-  display: flex;
-  flex: auto;
-  justify-content: flex-end;
-  margin-left: 20px;
 }
 </style>
