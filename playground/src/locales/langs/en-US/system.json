@@ -54,12 +54,15 @@
     "list": "Role List",
     "name": "Role",
     "roleName": "Role Name",
+    "code": "Role Code",
     "id": "Role ID",
     "status": "Status",
     "remark": "Remark",
     "createTime": "Creation Time",
     "operation": "Operation",
     "permissions": "Permissions",
-    "setMenuPermissions": "Permissions"
+    "setMenuPermissions": "Menu Permissions",
+    "setApiPermissions": "API Permissions",
+    "apiPermissionPlaceholder": "Enter API permission ID (number) and press Enter or click Add"
   }
 }

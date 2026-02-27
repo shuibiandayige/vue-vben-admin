@@ -13,6 +13,12 @@ export function useFormSchema(): VbenFormSchema[] {
       rules: 'required',
     },
     {
+      component: 'Input',
+      fieldName: 'code',
+      label: $t('system.role.code'),
+      rules: 'required',
+    },
+    {
       component: 'RadioGroup',
       componentProps: {
         buttonStyle: 'solid',
@@ -33,9 +39,16 @@ export function useFormSchema(): VbenFormSchema[] {
     },
     {
       component: 'Input',
-      fieldName: 'permissions',
+      fieldName: 'menuIds',
       formItemClass: 'items-start',
       label: $t('system.role.setMenuPermissions'),
+      modelPropName: 'modelValue',
+    },
+    {
+      component: 'Input',
+      fieldName: 'apiPermissions',
+      formItemClass: 'items-start',
+      label: $t('system.role.setApiPermissions'),
       modelPropName: 'modelValue',
     },
   ];
@@ -82,6 +95,11 @@ export function useColumns<T = SystemRoleApi.SystemRole>(
     {
       field: 'name',
       title: $t('system.role.roleName'),
+      width: 200,
+    },
+    {
+      field: 'code',
+      title: $t('system.role.code'),
       width: 200,
     },
     {

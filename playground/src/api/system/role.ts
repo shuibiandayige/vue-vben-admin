@@ -5,9 +5,12 @@ import { requestClient } from '#/api/request';
 export namespace SystemRoleApi {
   export interface SystemRole {
     [key: string]: any;
+    apiPermissions: number[];
+    code: string;
+    createTime?: string;
     id: string;
+    menuIds: number[];
     name: string;
-    permissions: string[];
     remark?: string;
     status: 0 | 1;
   }

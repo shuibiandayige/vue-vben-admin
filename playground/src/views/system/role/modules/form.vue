@@ -10,7 +10,7 @@ import { computed, nextTick, ref } from 'vue';
 import { Tree, useVbenDrawer } from '@vben/common-ui';
 import { IconifyIcon } from '@vben/icons';
 
-import { Spin } from 'ant-design-vue';
+import { Input, Spin, Tag } from 'ant-design-vue';
 
 import { useVbenForm } from '#/adapter/form';
 import { getMenuList } from '#/api/system/menu';
@@ -30,6 +30,9 @@ const [Form, formApi] = useVbenForm({
 
 const permissions = ref<DataNode[]>([]);
 const loadingPermissions = ref(false);
+
+// apiPermissions input state
+const apiPermissionInput = ref('');
 
 const id = ref();
 const [Drawer, drawerApi] = useVbenDrawer({
@@ -52,6 +55,7 @@ const [Drawer, drawerApi] = useVbenDrawer({
     if (isOpen) {
       const data = drawerApi.getData<SystemRoleApi.SystemRole>();
       formApi.resetForm();
+      apiPermissionInput.value = '';
 
       if (data) {
         formData.value = data;
@@ -96,11 +100,33 @@ function getNodeClass(node: Recordable<any>) {
 
   return classes.join(' ');
 }
+
+async function addApiPermission() {
+  const raw = apiPermissionInput.value.trim();
+  if (!raw) return;
+  const id = Number(raw);
+  if (!Number.isInteger(id) || Number.isNaN(id)) return;
+  const values = await formApi.getValues();
+  const current = (values.apiPermissions as number[]) ?? [];
+  if (!current.includes(id)) {
+    formApi.setFieldValue('apiPermissions', [...current, id]);
+  }
+  apiPermissionInput.value = '';
+}
+
+async function removeApiPermission(id: number) {
+  const values = await formApi.getValues();
+  const current = (values.apiPermissions as number[]) ?? [];
+  formApi.setFieldValue(
+    'apiPermissions',
+    current.filter((c) => c !== id),
+  );
+}
 </script>
 <template>
   <Drawer :title="getDrawerTitle">
     <Form>
-      <template #permissions="slotProps">
+      <template #menuIds="slotProps">
         <Spin :spinning="loadingPermissions" wrapper-class-name="w-full">
           <Tree
             :tree-data="permissions"
@@ -120,23 +146,31 @@ function getNodeClass(node: Recordable<any>) {
           </Tree>
         </Spin>
       </template>
+      <template #apiPermissions="slotProps">
+        <div class="flex w-full flex-col gap-2">
+          <div class="flex gap-2">
+            <Input
+              v-model:value="apiPermissionInput"
+              :placeholder="$t('system.role.apiPermissionPlaceholder')"
+              allow-clear
+              @press-enter="addApiPermission"
+            />
+            <a-button type="primary" @click="addApiPermission">
+              {{ $t('common.add') }}
+            </a-button>
+          </div>
+          <div class="flex flex-wrap gap-1">
+            <Tag
+              v-for="permId in slotProps.modelValue as number[]"
+              :key="permId"
+              closable
+              @close="removeApiPermission(permId)"
+            >
+              {{ permId }}
+            </Tag>
+          </div>
+        </div>
+      </template>
     </Form>
   </Drawer>
 </template>
-<style lang="css" scoped>
-:deep(.ant-tree-title) {
-  .tree-actions {
-    display: none;
-    margin-left: 20px;
-  }
-}
-
-:deep(.ant-tree-title:hover) {
-  .tree-actions {
-    display: flex;
-    flex: auto;
-    justify-content: flex-end;
-    margin-left: 20px;
-  }
-}
-</style>

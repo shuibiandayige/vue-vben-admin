@@ -56,12 +56,15 @@
     "list": "角色列表",
     "name": "角色",
     "roleName": "角色名称",
+    "code": "角色标识",
     "id": "角色ID",
     "status": "状态",
     "remark": "备注",
     "createTime": "创建时间",
     "operation": "操作",
     "permissions": "权限",
-    "setMenuPermissions": "授权"
+    "setMenuPermissions": "菜单授权",
+    "setApiPermissions": "API 权限",
+    "apiPermissionPlaceholder": "输入 API 权限 ID（数字），回车或点击添加"
   }
 }

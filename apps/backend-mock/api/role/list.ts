@@ -23,12 +23,24 @@ function generateMockDataList(count: number) {
     const dataItem: Record<string, any> = {
       id: faker.string.uuid(),
       name: faker.commerce.product(),
+      code: faker.helpers.slugify(faker.commerce.product()).toLowerCase(),
       status: faker.helpers.arrayElement([0, 1]),
       createTime: formatterCN.format(
         faker.date.between({ from: '2022-01-01', to: '2025-01-01' }),
       ),
-      permissions: faker.helpers.arrayElements(menuIds),
-      apiPermissions: faker.helpers.arrayElements([1, 2, 3, 4, 5, 6]),
+      menuIds: faker.helpers.arrayElements(menuIds),
+      apiPermissions: faker.helpers.arrayElements([
+        'sys:user:list',
+        'sys:user:create',
+        'sys:user:update',
+        'sys:user:delete',
+        'sys:role:list',
+        'sys:role:create',
+        'sys:role:update',
+        'sys:role:delete',
+        'sys:menu:list',
+        'sys:menu:create',
+      ]),
       remark: faker.lorem.sentence(),
     };
 
