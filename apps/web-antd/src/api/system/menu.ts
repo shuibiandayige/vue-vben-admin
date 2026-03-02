@@ -91,10 +91,10 @@ export namespace SystemMenuApi {
 }
 
 /**
- * 获取菜单数据列表
+ * 获取所有系统菜单数据列表
  */
-async function getMenuList() {
-  return requestClient.get<Array<SystemMenuApi.SystemMenu>>('/menu/list');
+async function getAllMenuList() {
+  return requestClient.get<Array<SystemMenuApi.SystemMenu>>('/menu/all');
 }
 
 async function isMenuNameExists(
@@ -149,7 +149,7 @@ async function deleteMenu(id: string) {
 export {
   createMenu,
   deleteMenu,
-  getMenuList,
+  getAllMenuList,
   isMenuNameExists,
   isMenuPathExists,
   updateMenu,
