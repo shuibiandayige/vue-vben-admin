@@ -1,4 +1,4 @@
-import type { Recordable } from '@vben/types';
+import type { Recordable, RouteRecordStringComponent } from '@vben/types';
 
 import { requestClient } from '#/api/request';
 
@@ -91,6 +91,13 @@ export namespace SystemMenuApi {
 }
 
 /**
+ * 获取用用户菜单
+ */
+async function getUserMenusApi() {
+  return requestClient.get<RouteRecordStringComponent[]>('/menu/list');
+}
+
+/**
  * 获取所有系统菜单数据列表
  */
 async function getAllMenuList() {
@@ -150,6 +157,7 @@ export {
   createMenu,
   deleteMenu,
   getAllMenuList,
+  getUserMenusApi,
   isMenuNameExists,
   isMenuPathExists,
   updateMenu,
