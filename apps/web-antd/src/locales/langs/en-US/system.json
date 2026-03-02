@@ -75,5 +75,23 @@
     "remark": "Remark",
     "createdAt": "Creation Time",
     "operation": "Operation"
+  },
+  "config": {
+    "title": "System Config",
+    "basicInfo": "Basic Information",
+    "appearance": "Appearance",
+    "features": "Features",
+    "projectName": "Project Name",
+    "projectVersion": "Project Version",
+    "projectDescription": "Project Description",
+    "copyright": "Copyright",
+    "logoUrl": "Logo URL",
+    "loginBackgroundUrl": "Login Background URL",
+    "keepAlive": "Enable Keep Alive",
+    "animationName": "Route Animation",
+    "watermarkEnabled": "Enable Watermark",
+    "watermarkContent": "Watermark Content",
+    "defaultTimezone": "Default Timezone",
+    "saveSuccess": "System config saved successfully"
   }
 }
