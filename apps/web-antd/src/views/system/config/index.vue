@@ -230,7 +230,7 @@ onMounted(() => {
 
         <Divider />
 
-        <div class="flex justify-end">
+        <div class="mr-12 flex justify-end">
           <Button type="primary" :loading="saving" @click="handleSave">
             {{ $t('common.save') }}
           </Button>
